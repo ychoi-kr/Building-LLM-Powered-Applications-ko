@@ -1,90 +1,62 @@
-# Building-LLM-Powered-Applications
-This is the code repository for [Building LLM Powered Application](https://www.amazon.in/Building-LLM-Apps-Intelligent-Language-ebook/dp/B0CMD2W6Q5/ref=sr_1_1?crid=2LL0C0LMSKPM6&dib=eyJ2IjoiMSJ9.DEphvN2ScVuQzpjIGvwjew.XSR1MjKXZ__UKVISKZIx67efPb1cpj9WniOhpxtqz98&dib_tag=se&keywords=9781835462317&qid=1716360537&sprefix=9781835462317%2Caps%2C209&sr=8-1), Published by Packt.
+# Building LLM Powered Application 한국어판 예제
 
-**Create intelligent apps and agents with large language models**
 
-## About the book
-The book provides a solid theoretical foundation of what LLMs are, their architecture. With a hands-on approach we provide readers with a step-by-step guide to implementing LLM-powered apps for specific tasks and using powerful frameworks like LangChain.
+**지능형 앱 및 에이전트를 대형 언어 모델로 구축하기**
 
-## What you will learn
+## 책 소개
+이 책은 대형 언어 모델(LLM)이 무엇인지, 그들의 아키텍처에 대한 탄탄한 이론적 기초를 제공한다. 실습 접근법을 통해 독자들에게 특정 작업을 위한 LLM 기반 앱을 구현하는 단계별 가이드를 제공하며, LangChain과 같은 강력한 프레임워크를 사용하는 방법도 다룬다.
 
-- Explore the core components of LLM architecture, including encoder-decoder blocks and embeddings
-- Understand the unique features of LLMs like GPT-3.5/4, Llama 2, and Falcon LLM
-- Use AI orchestrators like LangChain, with Streamlit for the frontend
-- Get familiar with LLM components such as memory, prompts, and tools
-- Learn how to use non-parametric knowledge and vector databases
-- Understand the implications of LFMs for AI research and industry applications
-- Customize your LLMs with fine tuning
-- Learn about the ethical implications of LLM-powered applications
+## 학습 내용
 
-## Table of Contents
-### Chapters
-1. Introduction to Large Language Models
-2. LLMs for AI-Powered Applications
-3. Choosing an LLM for Your Application
-4. Prompt Engineering
-5. Embedding LLMs within Your Applications
-6. Building Conversational Applications
-7. Search and Recommendation Engines with LLMs
-8. Using LLMs with Structured Data
-9. Working with Code
-10. Building Multimodal Applications with LLMs
-11. Fine-Tuning Large Language Models
-12. Responsible AI
-13. Emerging Trends and Innovations
+- 인코더-디코더 블록 및 임베딩을 포함한 LLM 아키텍처의 핵심 구성 요소 탐색
+- GPT-3.5/4, Llama 2, Falcon LLM과 같은 LLM의 독특한 기능 이해
+- LangChain과 같은 AI 오케스트레이터를 프론트엔드 Streamlit과 함께 사용하기
+- 메모리, 프롬프트, 도구와 같은 LLM 구성 요소에 익숙해지기
+- 비모수적 지식 및 벡터 데이터베이스 사용 방법 배우기
+- AI 연구 및 산업 응용을 위한 LFM의 함의 이해
+- 미세 조정을 통해 LLM을 사용자 정의하기
+- LLM 기반 애플리케이션의 윤리적 함의에 대해 배우기
 
-### Platforms
-You can run the notebooks directly from the table below:
+## 목차
 
-| Chapters | Colab | Kaggle | 
+1. 대규모 언어 모델 소개
+2. AI 기반 애플리케이션을 위한 LLM
+3. 애플리케이션에 적합한 LLM 선택
+4. 프롬프트 엔지니어링
+5. 애플리케이션에 LLM 임베딩하기
+6. 대화형 애플리케이션 구축
+7. LLM을 활용한 검색 및 추천 엔진
+8. 정형 데이터와 함께 LLM 사용하기
+9. 코드 작업하기
+10. LLM으로 멀티모달 애플리케이션 구축
+11. 대규모 언어 모델 미세 조정
+12. 책임 있는 AI
+13. 새로운 트렌드와 혁신
+
+### 플랫폼
+다음 표에서 노트북을 바로 실행할 수 있습니다.
+
+| 장 | Colab | Kaggle | 
 | :-------- | :-------- | :------- |
 | | | |
-**Chapter 4: Prompt Engineering**
-| <ul><li>🛠Prompt_Engineering</li></ul> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PacktPublishing/Building-LLM-Powered-Applications/blob/main/Chapter%204%20-%20Prompt%20Engineering.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/PacktPublishing/Building-LLM-Powered-Applications/blob/main/Chapter%204%20-%20Prompt%20Engineering.ipynb) | 
-**Chapter 5: Embedding LLMs within your Applications**
-| <ul><li>🛠Embedding_LLMs_within_your_Applications</li></ul> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PacktPublishing/Building-LLM-Powered-Applications/blob/main/Chapter%205%20-%20Embedding%20LLMs%20within%20your%20Applications.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/PacktPublishing/Building-LLM-Powered-Applications/blob/main/Chapter%205%20-%20Embedding%20LLMs%20within%20your%20Applications.ipynb) |
-**Chapter 6: Building Conversational Applications**
-| <ul><li>🛠Building_Conversational_Applications</li></ul> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PacktPublishing/Building-LLM-Powered-Applications/blob/main/Chapter%206%20-%20Building%20conversational%20apps.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/PacktPublishing/Building-LLM-Powered-Applications/blob/main/Chapter%206%20-%20Building%20conversational%20apps.ipynb) |
-**Chapter 7: Search and Recommendation Engines with LLMs**
-| <ul><li>🛠Search_and_Recommendation_Engines_with_LLMs</li></ul> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PacktPublishing/Building-LLM-Powered-Applications/blob/main/Chapter%207%20-%20Building%20recommendation%20systems%20with%20LLMs.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/PacktPublishing/Building-LLM-Powered-Applications/blob/main/Chapter%207%20-%20Building%20recommendation%20systems%20with%20LLMs.ipynb) |
-**Chapter 8: Using LLMs with Structured Data**
-| <ul><li>🛠Using_LLMs_with_Structured_Data</li></ul> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PacktPublishing/Building-LLM-Powered-Applications/blob/main/Chapter%208%20-%20LLMs%20with%20structured%20data.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/PacktPublishing/Building-LLM-Powered-Applications/blob/main/Chapter%208%20-%20LLMs%20with%20structured%20data.ipynb) |
-**Chapter 9: Working with Code**
-| <ul><li>🛠Working_with_Code</li></ul> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PacktPublishing/Building-LLM-Powered-Applications/blob/main/Chapter%209-Working%20with%20code.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/PacktPublishing/Building-LLM-Powered-Applications/blob/main/Chapter%209-Working%20with%20code.ipynb) |
-**Chapter 10: Building Multimodal Applications with LLMs**
-| <ul><li>🛠Building_Multimodal_Applications_with_LLMs</li></ul> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PacktPublishing/Building-LLM-Powered-Applications/blob/main/Chapter%2010%20-%20Building%20multi-modal%20agents.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/PacktPublishing/Building-LLM-Powered-Applications/blob/main/Chapter%2010%20-%20Building%20multi-modal%20agents.ipynb) |
-**Chapter 11: Fine-Tuning Large Language Models**
-| <ul><li>🛠Fine-Tuning_Large_Language_Models</li></ul> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PacktPublishing/Building-LLM-Powered-Applications/blob/main/Chapter%2011%20-%20Fine%20tuning%20LLMs.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/PacktPublishing/Building-LLM-Powered-Applications/blob/main/Chapter%2011%20-%20Fine%20tuning%20LLMs.ipynb) |
-
-> If you feel this book is for you, get your [copy](https://www.amazon.in/Building-LLM-Apps-Intelligent-Language-ebook/dp/B0CMD2W6Q5/ref=sr_1_1?crid=2LL0C0LMSKPM6&dib=eyJ2IjoiMSJ9.DEphvN2ScVuQzpjIGvwjew.XSR1MjKXZ__UKVISKZIx67efPb1cpj9WniOhpxtqz98&dib_tag=se&keywords=9781835462317&qid=1716360537&sprefix=9781835462317%2Caps%2C209&sr=8-1) today! <img alt="Coding" height="15" width="35"  src="https://media.tenor.com/ex_HDD_k5P8AAAAi/habbo-habbohotel.gif">
+**4장 프롬프트 엔지니어링**
+| <ul><li>🛠Prompt_Engineering</li></ul> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ychoi-kr/Building-LLM-Powered-Applications-ko/blob/main/Chapter%204%20-%20Prompt%20Engineering.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/ychoi-kr/Building-LLM-Powered-Applications-ko/blob/main/Chapter%204%20-%20Prompt%20Engineering.ipynb) | 
+**5장 애플리케이션에 LLM 임베딩하기**
+| <ul><li>🛠Embedding_LLMs_within_your_Applications</li></ul> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ychoi-kr/Building-LLM-Powered-Applications-ko/blob/main/Chapter%205%20-%20Embedding%20LLMs%20within%20your%20Applications.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/ychoi-kr/Building-LLM-Powered-Applications-ko/blob/main/Chapter%205%20-%20Embedding%20LLMs%20within%20your%20Applications.ipynb) |
+**6장 대화형 애플리케이션 구축**
+| <ul><li>🛠Building_Conversational_Applications</li></ul> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ychoi-kr/Building-LLM-Powered-Applications-ko/blob/main/Chapter%206%20-%20Building%20conversational%20apps.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/ychoi-kr/Building-LLM-Powered-Applications-ko/blob/main/Chapter%206%20-%20Building%20conversational%20apps.ipynb) |
+**7장 LLM을 활용한 검색 및 추천 엔진**
+| <ul><li>🛠Search_and_Recommendation_Engines_with_LLMs</li></ul> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ychoi-kr/Building-LLM-Powered-Applications-ko/blob/main/Chapter%207%20-%20Building%20recommendation%20systems%20with%20LLMs.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/ychoi-kr/Building-LLM-Powered-Applications-ko/blob/main/Chapter%207%20-%20Building%20recommendation%20systems%20with%20LLMs.ipynb) |
+**8장 정형 데이터와 함께 LLM 사용하기**
+| <ul><li>🛠Using_LLMs_with_Structured_Data</li></ul> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ychoi-kr/Building-LLM-Powered-Applications-ko/blob/main/Chapter%208%20-%20LLMs%20with%20structured%20data.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/ychoi-kr/Building-LLM-Powered-Applications-ko/blob/main/Chapter%208%20-%20LLMs%20with%20structured%20data.ipynb) |
+**9장 코드 작업하기**
+| <ul><li>🛠Working_with_Code</li></ul> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ychoi-kr/Building-LLM-Powered-Applications-ko/blob/main/Chapter%209-Working%20with%20code.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/ychoi-kr/Building-LLM-Powered-Applications-ko/blob/main/Chapter%209-Working%20with%20code.ipynb) |
+**10장 LLM으로 멀티모달 애플리케이션 구축**
+| <ul><li>🛠Building_Multimodal_Applications_with_LLMs</li></ul> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ychoi-kr/Building-LLM-Powered-Applications-ko/blob/main/Chapter%2010%20-%20Building%20multi-modal%20agents.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/ychoi-kr/Building-LLM-Powered-Applications-ko/blob/main/Chapter%2010%20-%20Building%20multi-modal%20agents.ipynb) |
+**11장 대규모 언어 모델 미세 조정**
+| <ul><li>🛠Fine-Tuning_Large_Language_Models</li></ul> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ychoi-kr/Building-LLM-Powered-Applications-ko/blob/main/Chapter%2011%20-%20Fine%20tuning%20LLMs.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://github.com/ychoi-kr/Building-LLM-Powered-Applications-ko/blob/main/Chapter%2011%20-%20Fine%20tuning%20LLMs.ipynb) |
 
 
-### Following is what you need for this book: ###
+## 원서 정보
 
-With the following software and hardware list you can run all code files present in the book.
-
-## Software and Hardware List
-
-| Chapter | Software required    | Link to the software    | Hardware specifications    | OS required    |
-| :---:  | :---: | :---: |:---: | :---: |
-| 4-11 | Python  | [Download](https://www.python.org/downloads/)   | Suitable |  Windows/Linux/MacOS |
-
-## Errata
-
-* Page 8, Chapter 1 : **P(“table”), P(“chain”), and P(“roof”) are the prior probabilities for each candidate word, based on the language model’s knowledge of the frequency of these words in the training data.**
-_Correction:_ **P(“table”), P(“chair”), and P(“roof”) are the prior probabilities for each candidate word, based on the language model’s knowledge of the frequency of these words in the training data.**
-
-## Know more on the Discord server <img alt="Coding" height="25" width="32"  src="https://cliply.co/wp-content/uploads/2021/08/372108630_DISCORD_LOGO_400.gif">
-
-You can get more engaged on the discord server for more latest updates and discussions in the community at [Discord](https://packt.link/llm)
-
-## Download a Free PDF <img alt="Coding" height="25" width="40" src="https://emergency.com.au/wp-content/uploads/2021/03/free.gif">
-
-_If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost. Simply click on the link to claim your free PDF._
-[Free-PDF](https://packt.link/free-ebook/9781835462317) <img alt="Coding" height="15" width="35"  src="https://media.tenor.com/ex_HDD_k5P8AAAAi/habbo-habbohotel.gif">
-
-We also provide a PDF file that has color images of the screenshots/diagrams used in this book at [Color Images](https://packt.link/gbp/9781835462317) <img alt="Coding" height="15" width="35"  src="https://media.tenor.com/ex_HDD_k5P8AAAAi/habbo-habbohotel.gif">
-
-
-## Get to Know the Author
-After completing her bachelor's degree in finance, *Valentina Alto* pursued a master's degree in data science in 2021. She began her professional career at Microsoft as an Azure Solution Specialist, and since 2022, she has been primarily focused on working with Data & AI solutions in the Manufacturing and Pharmaceutical industries. Valentina collaborates closely with system integrators on customer projects, with a particular emphasis on deploying cloud architectures that incorporate modern data platforms, data mesh frameworks, and applications of Machine Learning and Artificial Intelligence.
+[Building LLM Powered Application](https://www.amazon.in/Building-LLM-Apps-Intelligent-Language-ebook/dp/B0CMD2W6Q5/ref=sr_1_1?crid=2LL0C0LMSKPM6&dib=eyJ2IjoiMSJ9.DEphvN2ScVuQzpjIGvwjew.XSR1MjKXZ__UKVISKZIx67efPb1cpj9WniOhpxtqz98&dib_tag=se&keywords=9781835462317&qid=1716360537&sprefix=9781835462317%2Caps%2C209&sr=8-1), Published by Packt.
