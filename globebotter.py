@@ -3,32 +3,31 @@ import os
 from dotenv import load_dotenv
 import streamlit as st
 from langchain.memory import ConversationBufferMemory 
-from langchain.llms import OpenAI
-from langchain.chat_models import ChatOpenAI
-from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain_community.llms import OpenAI
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.vectorstores import FAISS
-from langchain.document_loaders import PyPDFLoader
+from langchain_community.vectorstores import FAISS
+from langchain_community.document_loaders import PyPDFLoader
 from langchain.chains import ConversationalRetrievalChain
 from langchain.agents.agent_toolkits import create_retriever_tool
 from langchain.agents.agent_toolkits import create_conversational_retrieval_agent
-from langchain import SerpAPIWrapper
-from langchain.callbacks import StreamlitCallbackHandler
+from langchain_community.utilities import SerpAPIWrapper
+from langchain_community.callbacks.streamlit import StreamlitCallbackHandler
 from langchain.tools import BaseTool, Tool, tool
 from langchain.callbacks.base import BaseCallbackHandler
 from langchain.schema import ChatMessage
-from langchain.memory.chat_message_histories import StreamlitChatMessageHistory
-from langchain import PromptTemplate, LLMChain
+from langchain_community.chat_message_histories import StreamlitChatMessageHistory
+from langchain_core.prompts import PromptTemplate
+from langchain.chains import LLMChain
 
-#from langchain import HuggingFaceHub
+
 st.set_page_config(page_title="GlobeBotter", page_icon="🌐")
-st.header('🌐 Welcome to Globebotter, your travel assistant with Internet access. What are you planning for your next trip?')
+st.header('🌐 안녕하세요. 저는 글로브보터입니다. 인터넷에 접속할 수 있는 여행 도우미입니다. 다음 여행은 무엇을 계획 중이신가요?')
 
 
 
 load_dotenv()
 
-#os.environ["HUGGINGFACEHUB_API_TOKEN"]
 openai_api_key = os.environ['OPENAI_API_KEY']
 serpapi_api_key = os.environ['SERPAPI_API_KEY']
 
@@ -48,29 +47,29 @@ memory = ConversationBufferMemory(
     output_key="output"
 )
 
-llm = ChatOpenAI()
+llm = ChatOpenAI(model="gpt-4o-mini")
 tools = [
     Tool.from_function(
         func=search.run,
         name="Search",
-        description="useful for when you need to answer questions about current events"
+        description="현재 일어나고 있는 일에 관한 질문에 답할 때 유용합니다."
     ),
     create_retriever_tool(
         db.as_retriever(), 
         "italy_travel",
-        "Searches and returns documents regarding Italy."
+        "이탈리아에 관한 문서를 검색하고 반환합니다."
     )
     ]
 
 agent = create_conversational_retrieval_agent(llm, tools, memory_key='chat_history', verbose=True)
 
 user_query = st.text_input(
-    "**Where are you planning your next vacation?**",
-    placeholder="Ask me anything!"
+    "**휴가 때 어디에 갈 계획이신가요?**",
+    placeholder="무엇이든 물어보세요!"
 )
 
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "무엇을 도와드릴까요?"}]
 if "memory" not in st.session_state:
     st.session_state['memory'] = memory
 
@@ -92,10 +91,5 @@ if user_query:
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.write(response)
 
-if st.sidebar.button("Reset chat history"):
+if st.sidebar.button("채팅 기록 초기화"):
     st.session_state.messages = []
-
-
-
-
-
