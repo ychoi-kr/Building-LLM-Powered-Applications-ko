@@ -1,39 +1,25 @@
 import os
 from dotenv import load_dotenv
 import streamlit as st
-from langchain.llms import OpenAI
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain.tools import BaseTool, Tool, tool
 from langchain.callbacks.base import BaseCallbackHandler
-from langchain import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 import pandas as pd
-from langchain.agents import create_sql_agent
-from langchain.agents.agent_toolkits import SQLDatabaseToolkit
-from langchain.sql_database import SQLDatabase
+from langchain_community.agent_toolkits import create_sql_agent
+from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
+from langchain_community.utilities import SQLDatabase
 from langchain.agents import AgentExecutor
-from langchain.agents.agent_types import AgentType
-from langchain.callbacks import StreamlitCallbackHandler
+from langchain_community.callbacks.streamlit import StreamlitCallbackHandler
 
 st.set_page_config(page_title="DBCopilot", page_icon="📊")
-st.header('📊 Welcome to DBCopilot, your copilot for structured databases.')
+st.header('📊 정형 데이터베이스를 위한 DBCopilot입니다.')
 
 load_dotenv()
 
-#os.environ["HUGGINGFACEHUB_API_TOKEN"]
-openai_api_key = os.environ['OPENAI_API_KEY']
-
 db = SQLDatabase.from_uri('sqlite:///chinook.db')
 
-# Import Azure OpenAI
-#from langchain.llms import AzureOpenAI
-#from langchain.chat_models import AzureChatOpenAI
-
-# Uncomment these lines if you want to use your AOAI instance.
-#llm = AzureOpenAI(deployment_name="text-davinci-003", model_name="text-davinci-003")
-#model = AzureChatOpenAI(deployment_name='gpt-35-turbo',openai_api_type="azure")
-
-llm = OpenAI()
-model = ChatOpenAI()
+llm = ChatOpenAI(model="gpt-4o")
 
 toolkit = SQLDatabaseToolkit(db=db, llm=llm)
 
@@ -92,16 +78,16 @@ agent_executor = create_sql_agent(
     llm=llm,
     toolkit=toolkit,
     verbose=True,
-    top_k=10
+    top_k=10,
 )
 
-if "messages" not in st.session_state or st.sidebar.button("Clear message history"):
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+if "messages" not in st.session_state or st.sidebar.button("대화 내역 지우기"):
+    st.session_state["messages"] = [{"role": "assistant", "content": "무엇을 도와드릴까요?"}]
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
-user_query = st.chat_input(placeholder="Ask me anything!")
+user_query = st.chat_input(placeholder="무엇이든 물어보세요!")
 
 if user_query:
     st.session_state.messages.append({"role": "user", "content": user_query})
