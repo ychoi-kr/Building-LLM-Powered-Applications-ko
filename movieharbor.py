@@ -34,20 +34,20 @@ db = lancedb.connect(uri)
 table = db.open_table('movies')
 docsearch = LanceDB(connection = table, embedding = embeddings)
 
-# Import the movie dataset
+# 영화 데이터셋 불러오기
 md = pd.read_pickle('movies.pkl')
 
-# Create a sidebar for user input
+# 사용자 입력을 위한 사이드바 생성
 st.sidebar.title("Movie Recommendation System")
 st.sidebar.markdown("Please enter your details and preferences below:")
 
-# Ask the user for age, gender and favourite movie genre
+# 사용자에게 나이, 성별 및 선호 영화 장르를 묻기
 age = st.sidebar.slider("What is your age?", 1, 100, 25)
 gender = st.sidebar.radio("What is your gender?", ("Male", "Female", "Other"))
 genre = st.sidebar.selectbox("What is your favourite movie genre?", md.explode('genres')["genres"].unique())
 
 
-# Filter the movies based on the user input
+# 사용자 입력을 기반으로 영화를 필터링
 df_filtered = md[md['genres'].apply(lambda x: genre in x)]
 
 
@@ -69,7 +69,7 @@ user_info = user_info.format(age = age, gender = gender)
 COMBINED_PROMPT = template_prefix +'\n'+ user_info +'\n'+ template_suffix
 print(COMBINED_PROMPT)
 
-#setting up the chain
+# 체인 설정
 qa = RetrievalQA.from_chain_type(llm=OpenAI(), chain_type="stuff", 
     retriever=docsearch.as_retriever(search_kwargs={'data': df_filtered}), return_source_documents=True)
 
