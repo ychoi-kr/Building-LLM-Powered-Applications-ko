@@ -20,8 +20,8 @@ import lancedb
 import pandas as pd
 from langchain.chains import RetrievalQA
 
-st.set_page_config(page_title="GlobeBotter", page_icon="🎬")
-st.header('🎬 Welcome to MovieHarbor, your favourite movie recommender')
+st.set_page_config(page_title="MovieHarbor", page_icon="🎬")
+st.header('🎬 MovieHarbor에 오신 것을 환영합니다. 최고의 영화 추천 시스템입니다!')
 
 load_dotenv()
 
@@ -39,13 +39,13 @@ docsearch = LanceDB(connection=db, embedding=embeddings, table_name="movies")
 md = pd.read_pickle('movies.pkl')
 
 # 사용자 입력을 위한 사이드바 생성
-st.sidebar.title("Movie Recommendation System")
-st.sidebar.markdown("Please enter your details and preferences below:")
+st.sidebar.title("영화 추천 시스템")
+st.sidebar.markdown("아래에 정보를 입력해주세요:")
 
 # 사용자에게 나이, 성별 및 선호 영화 장르를 묻기
-age = st.sidebar.slider("What is your age?", 1, 100, 25)
-gender = st.sidebar.radio("What is your gender?", ("Male", "Female", "Other"))
-genre = st.sidebar.selectbox("What is your favourite movie genre?", md.explode('genres')["genres"].unique())
+age = st.sidebar.slider("나이를 선택하세요", 1, 100, 25)
+gender = st.sidebar.radio("성별을 선택하세요", ("Male", "Female", "Other"))
+genre = st.sidebar.selectbox("선호하는 영화 장르를 선택하세요", md.explode('genres')["genres"].unique())
 
 
 # 사용자 입력을 기반으로 영화를 필터링
@@ -75,7 +75,7 @@ qa = RetrievalQA.from_chain_type(llm=OpenAI(), chain_type="stuff",
     retriever=docsearch.as_retriever(search_kwargs={'data': df_filtered}), return_source_documents=True)
 
 
-query = st.text_input('Enter your question:', placeholder = 'What action movies do you suggest?')
+query = st.text_input('질문을 입력하세요:', placeholder = '어떤 액션 영화를 추천해 주시겠어요?')
 if query:
     result = qa.invoke({"query": query})
     st.write(result['result'])
