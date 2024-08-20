@@ -1,20 +1,21 @@
 import os
 from dotenv import load_dotenv
 import streamlit as st
-from langchain.llms import OpenAI
-from langchain.chat_models import ChatOpenAI
-from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain_openai import OpenAI
+from langchain_openai import ChatOpenAI
+from langchain_openai import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains import ConversationalRetrievalChain
 from langchain.agents.agent_toolkits import create_retriever_tool
 from langchain.agents.agent_toolkits import create_conversational_retrieval_agent
-from langchain.callbacks import StreamlitCallbackHandler
+from langchain_community.callbacks.streamlit import StreamlitCallbackHandler
 from langchain.tools import BaseTool, Tool, tool
 from langchain.callbacks.base import BaseCallbackHandler
 from langchain.schema import ChatMessage
-from langchain.memory.chat_message_histories import StreamlitChatMessageHistory
-from langchain import PromptTemplate, LLMChain
-from langchain.vectorstores import LanceDB
+from langchain_community.chat_message_histories import StreamlitChatMessageHistory
+from langchain_core.prompts import PromptTemplate
+from langchain.chains import LLMChain
+from langchain_community.vectorstores import LanceDB
 import lancedb
 import pandas as pd
 from langchain.chains import RetrievalQA
@@ -32,7 +33,7 @@ uri = "data/sample-lancedb"
 db = lancedb.connect(uri)
 
 table = db.open_table('movies')
-docsearch = LanceDB(connection = table, embedding = embeddings)
+docsearch = LanceDB(connection=db, embedding=embeddings, table_name="movies")
 
 # 영화 데이터셋 불러오기
 md = pd.read_pickle('movies.pkl')
@@ -76,6 +77,5 @@ qa = RetrievalQA.from_chain_type(llm=OpenAI(), chain_type="stuff",
 
 query = st.text_input('Enter your question:', placeholder = 'What action movies do you suggest?')
 if query:
-    result = qa({"query": query})
+    result = qa.invoke({"query": query})
     st.write(result['result'])
-
