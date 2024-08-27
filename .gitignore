@@ -6,3 +6,5 @@ figure.png
 /data
 movies.pkl
 tested.csv
+*.mp3
+transcriptions.json
