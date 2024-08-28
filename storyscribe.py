@@ -1,10 +1,10 @@
 import os
 from dotenv import load_dotenv
 import streamlit as st
-from langchain.llms import OpenAI
+from langchain_openai import ChatOpenAI
 from langchain.chains import SequentialChain, LLMChain
 from langchain.prompts import PromptTemplate
-from langchain.utilities.dalle_image_generator import DallEAPIWrapper
+from langchain_community.utilities.dalle_image_generator import DallEAPIWrapper
 
 
 
@@ -20,7 +20,7 @@ openai_api_key = os.environ['OPENAI_API_KEY']
 st.sidebar.title("SNS 포스팅 생성기")
 st.sidebar.markdown("아래에 세부 정보와 선호 사항을 입력하세요:")
 
-llm = OpenAI()
+llm = ChatOpenAI(model="gpt-4o-mini")
 
 # 사용자에게 주제, 장르, 대상 연령을 묻는다
 topic = st.sidebar.text_input("주제가 무엇인가요?", '해변에서 달리는 개')
@@ -29,23 +29,23 @@ audience = st.sidebar.text_input("시청자는 누구인가요?", '청소년')
 social = st.sidebar.text_input("어떤 소셜 미디어에 게시할까요?", '인스타그램')
 
 # 이야기 생성기
-story_template = """You are a storyteller. Given a topic, a genre and a target audience, you generate a story.
+story_template = """당신은 이야기꾼입니다. 주제, 장르, 대상 독자가 주어지면 이야기를 생성하세요.
 
-Topic: {topic}
-Genre: {genre}
-Audience: {audience}
-Story: This is a story about the above topic, with the above genre and for the above audience:"""
+주제: {topic}
+장르: {genre}
+대상 독자: {audience}
+이야기: 위 주제와 장르, 대상 독자에 맞는 이야기를 생성하세요:"""
 story_prompt_template = PromptTemplate(input_variables=["topic", "genre", "audience"], template=story_template)
 story_chain = LLMChain(llm=llm, prompt=story_prompt_template, output_key="story")
 
 # 소셜 미디어 게시물 생성기
-social_template = """You are an influencer that, given a story, generate a social media post to promote the story.
-The style should reflect the type of social media used.
+social_template = """당신은 인플루언서입니다. 주어진 이야기를 바탕으로, 해당 이야기를 홍보할 소셜 미디어 게시물을 생성하세요.
+스타일은 사용된 소셜 미디어 유형을 반영해야 합니다.
 
-Story: 
+이야기: 
 {story}
-Social media: {social}
-Review from a New York Times play critic of the above play:"""
+소셜 미디어: {social}
+위 작품에 대한 뉴욕 타임즈 연극 비평가의 리뷰:"""
 social_prompt_template = PromptTemplate(input_variables=["story", "social"], template=social_template)
 social_chain = LLMChain(llm=llm, prompt=social_prompt_template, output_key='post') 
 
