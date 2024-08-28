@@ -16,19 +16,19 @@ load_dotenv()
 
 openai_api_key = os.environ['OPENAI_API_KEY']
 
-# Create a sidebar for user input
+# 사용자 입력을 위한 사이드바 생성
 st.sidebar.title("Story teller and promoter")
 st.sidebar.markdown("Please enter your details and preferences below:")
 
 llm = OpenAI()
 
-# Ask the user for age, gender and favourite movie genre
+# 사용자에게 주제, 장르, 대상 연령을 묻는다
 topic = st.sidebar.text_input("What is topic?", 'A dog running on the beach')
 genre = st.sidebar.text_input("What is the genre?", 'Drama')
 audience = st.sidebar.text_input("What is your audience?", 'Young adult')
 social = st.sidebar.text_input("What is your social?", 'Instagram')
 
-#story generator
+# 이야기 생성기
 story_template = """You are a storyteller. Given a topic, a genre and a target audience, you generate a story.
 
 Topic: {topic}
@@ -38,7 +38,7 @@ Story: This is a story about the above topic, with the above genre and for the a
 story_prompt_template = PromptTemplate(input_variables=["topic", "genre", "audience"], template=story_template)
 story_chain = LLMChain(llm=llm, prompt=story_prompt_template, output_key="story")
 
-#post generator
+# 소셜 미디어 게시물 생성기
 social_template = """You are an influencer that, given a story, generate a social media post to promote the story.
 The style should reflect the type of social media used.
 
@@ -49,7 +49,7 @@ Review from a New York Times play critic of the above play:"""
 social_prompt_template = PromptTemplate(input_variables=["story", "social"], template=social_template)
 social_chain = LLMChain(llm=llm, prompt=social_prompt_template, output_key='post') 
 
-#image generator
+# 이미지 생성기
 
 image_template = """Generate a detailed prompt to generate an image based on the following social media post:
 
@@ -66,7 +66,7 @@ prompt = PromptTemplate(
 )
 image_chain = LLMChain(llm=llm, prompt=prompt, output_key='image')
 
-#overall chain
+# 전체 체인
 
 overall_chain = SequentialChain(input_variables = ['topic', 'genre', 'audience', 'social'], 
                 chains=[story_chain, social_chain, image_chain],
