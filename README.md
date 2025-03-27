@@ -1,4 +1,4 @@
-# Building LLM Powered Application 한국어판 예제
+# 실전! LLM을 활용한 생성형 AI 애플리케이션 개발
 
 
 **지능형 앱 및 에이전트를 대형 언어 모델로 구축하기**
